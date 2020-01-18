@@ -1,0 +1,14 @@
+D:\Licenta\EventWorld.Services\bin\Debug\netcoreapp2.2\EventWorld.Services.deps.json
+D:\Licenta\EventWorld.Services\bin\Debug\netcoreapp2.2\EventWorld.Services.dll
+D:\Licenta\EventWorld.Services\bin\Debug\netcoreapp2.2\EventWorld.Services.pdb
+D:\Licenta\EventWorld.Services\bin\Debug\netcoreapp2.2\EventWorld.Data.dll
+D:\Licenta\EventWorld.Services\bin\Debug\netcoreapp2.2\EventWorld.DTO.dll
+D:\Licenta\EventWorld.Services\bin\Debug\netcoreapp2.2\EventWorld.Data.pdb
+D:\Licenta\EventWorld.Services\bin\Debug\netcoreapp2.2\EventWorld.DTO.pdb
+D:\Licenta\EventWorld.Services\obj\Debug\netcoreapp2.2\EventWorld.Services.csprojAssemblyReference.cache
+D:\Licenta\EventWorld.Services\obj\Debug\netcoreapp2.2\EventWorld.Services.csproj.CoreCompileInputs.cache
+D:\Licenta\EventWorld.Services\obj\Debug\netcoreapp2.2\EventWorld.Services.AssemblyInfoInputs.cache
+D:\Licenta\EventWorld.Services\obj\Debug\netcoreapp2.2\EventWorld.Services.AssemblyInfo.cs
+D:\Licenta\EventWorld.Services\obj\Debug\netcoreapp2.2\EventWorld.Services.csproj.CopyComplete
+D:\Licenta\EventWorld.Services\obj\Debug\netcoreapp2.2\EventWorld.Services.dll
+D:\Licenta\EventWorld.Services\obj\Debug\netcoreapp2.2\EventWorld.Services.pdb

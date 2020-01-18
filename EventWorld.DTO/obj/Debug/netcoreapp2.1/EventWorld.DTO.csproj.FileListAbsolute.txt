@@ -1,0 +1,9 @@
+D:\Licenta\EventWorld.DTO\bin\Debug\netcoreapp2.1\EventWorld.DTO.deps.json
+D:\Licenta\EventWorld.DTO\bin\Debug\netcoreapp2.1\EventWorld.DTO.dll
+D:\Licenta\EventWorld.DTO\bin\Debug\netcoreapp2.1\EventWorld.DTO.pdb
+D:\Licenta\EventWorld.DTO\obj\Debug\netcoreapp2.1\EventWorld.DTO.csprojAssemblyReference.cache
+D:\Licenta\EventWorld.DTO\obj\Debug\netcoreapp2.1\EventWorld.DTO.csproj.CoreCompileInputs.cache
+D:\Licenta\EventWorld.DTO\obj\Debug\netcoreapp2.1\EventWorld.DTO.AssemblyInfoInputs.cache
+D:\Licenta\EventWorld.DTO\obj\Debug\netcoreapp2.1\EventWorld.DTO.AssemblyInfo.cs
+D:\Licenta\EventWorld.DTO\obj\Debug\netcoreapp2.1\EventWorld.DTO.dll
+D:\Licenta\EventWorld.DTO\obj\Debug\netcoreapp2.1\EventWorld.DTO.pdb

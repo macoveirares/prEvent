@@ -1,0 +1,11 @@
+EventWorld.Data/bin/
+EventWorld.DTO/bin/
+EventWorld.Services/bin/Debug/netcoreapp2.1/EventWorld.DTO.dll
+EventWorld.Services/bin/
+EventWorld.Web/bin/
+.vs/EventWorld/v15/Server/sqlite3/storage.ide-wal
+.vs/EventWorld/v15/Server/sqlite3/storage.ide-shm
+.vs/EventWorld/v15/Server/sqlite3/storage.ide
+.vs/EventWorld/v15/Server/sqlite3/db.lock
+.vs/EventWorld/v15/.suo
+.vs/EventWorld/DesignTimeBuild/.dtbcache
