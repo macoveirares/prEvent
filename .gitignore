@@ -9,3 +9,4 @@ EventWorld.Web/bin/
 .vs/EventWorld/v15/Server/sqlite3/db.lock
 .vs/EventWorld/v15/.suo
 .vs/EventWorld/DesignTimeBuild/.dtbcache
+.vs/config/applicationhost.config
