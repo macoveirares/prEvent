@@ -1,0 +1,11 @@
+D:\Licenta\EventWorld.Data\bin\Release\netcoreapp2.2\EventWorld.Data.deps.json
+D:\Licenta\EventWorld.Data\bin\Release\netcoreapp2.2\EventWorld.Data.runtimeconfig.json
+D:\Licenta\EventWorld.Data\bin\Release\netcoreapp2.2\EventWorld.Data.runtimeconfig.dev.json
+D:\Licenta\EventWorld.Data\bin\Release\netcoreapp2.2\EventWorld.Data.dll
+D:\Licenta\EventWorld.Data\bin\Release\netcoreapp2.2\EventWorld.Data.pdb
+D:\Licenta\EventWorld.Data\obj\Release\netcoreapp2.2\EventWorld.Data.csprojAssemblyReference.cache
+D:\Licenta\EventWorld.Data\obj\Release\netcoreapp2.2\EventWorld.Data.csproj.CoreCompileInputs.cache
+D:\Licenta\EventWorld.Data\obj\Release\netcoreapp2.2\EventWorld.Data.AssemblyInfoInputs.cache
+D:\Licenta\EventWorld.Data\obj\Release\netcoreapp2.2\EventWorld.Data.AssemblyInfo.cs
+D:\Licenta\EventWorld.Data\obj\Release\netcoreapp2.2\EventWorld.Data.dll
+D:\Licenta\EventWorld.Data\obj\Release\netcoreapp2.2\EventWorld.Data.pdb

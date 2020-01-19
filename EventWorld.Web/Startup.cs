@@ -1,4 +1,5 @@
-﻿using EventWorld.Services.Infrastructure;
+﻿using EventWorld.DTO;
+using EventWorld.Services.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -29,7 +30,9 @@ namespace EventWorld.Web
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddIdentityCore<UserDTO>(options => { });
             services = ServicesDependencyMapper.GetDependencies(services, Configuration);
+            services.AddAuthentication("cookies").AddCookie("cookies", options => options.LoginPath = "/Account/SignIn");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +52,7 @@ namespace EventWorld.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

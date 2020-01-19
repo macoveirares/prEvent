@@ -12,7 +12,7 @@ namespace EventWorld.Data.Infrastructure
         List<T> GetAll();
         void Delete(T entity);
         void Delete(IEnumerable<T> entities);
-        T GetById(int id);
+        T GetById(long id);
 
         IEnumerable<T> Get(Expression<Func<T, bool>> where);
 

@@ -44,7 +44,7 @@ namespace EventWorld.Data.Infrastructure
             dbset.RemoveRange(entities);
         }
 
-        public T GetById(int id)
+        public T GetById(long id)
         {
             return dbset.Find(id);
         }

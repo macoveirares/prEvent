@@ -12,3 +12,5 @@ D:\Licenta\EventWorld.Services\obj\Debug\netcoreapp2.2\EventWorld.Services.Assem
 D:\Licenta\EventWorld.Services\obj\Debug\netcoreapp2.2\EventWorld.Services.csproj.CopyComplete
 D:\Licenta\EventWorld.Services\obj\Debug\netcoreapp2.2\EventWorld.Services.dll
 D:\Licenta\EventWorld.Services\obj\Debug\netcoreapp2.2\EventWorld.Services.pdb
+D:\Licenta\EventWorld.Services\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Core.dll
+D:\Licenta\EventWorld.Services\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Core.xml
