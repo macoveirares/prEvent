@@ -35,4 +35,4 @@ D:\Licenta\EventWorld.Web\bin\Debug\netcoreapp2.2\EventWorld.Services.pdb
 D:\Licenta\EventWorld.Web\bin\Debug\netcoreapp2.2\EventWorld.Data.pdb
 D:\Licenta\EventWorld.Web\bin\Debug\netcoreapp2.2\EventWorld.DTO.pdb
 D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Account\Login.g.cshtml.cs
-D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\User\Add.g.cshtml.cs
+D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Account\Register.g.cshtml.cs

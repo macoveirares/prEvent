@@ -29,6 +29,7 @@ namespace EventWorld.Services.Services.Users
         {
             var userToAdd = (User)new User().InjectFrom(userDTO);
             _repository.Add(userToAdd);
+            _unitOfWork.Commit();
         }
 
         public void Delete(UserDTO userDTO)

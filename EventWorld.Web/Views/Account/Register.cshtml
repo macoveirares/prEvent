@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Sign up";
+}
+
+<div class="register-container" id="register-model">
+    <div class="register-title">
+        <h1>Sign up for a better experience</h1>
+        <h5 class="register-subtitle">
+            Join EventWorld today!
+        </h5>
+    </div>
+    <div class="register-inputs">
+        <div class="input-wrapper">
+            <label>Email</label>
+            <input data-bind="textInput: emailTextBox" class="ew-input" type="text" name="name" value="" placeholder="Email" />
+        </div>
+        <div class="input-wrapper">
+            <label>First Name</label>
+            <input data-bind="textInput: firstNameTextBox" class="ew-input" type="text" name="name" value="" placeholder="First Name" />
+        </div>
+        <div class="input-wrapper">
+            <label>Last Name</label>
+            <input data-bind="textInput: lastNameTextBox" class="ew-input" type="text" name="name" value="" placeholder="Last Name" />
+        </div>
+        <div class="input-wrapper">
+            <label>Date of Birth</label>
+            <input data-bind="textInput: dateOfBirthTextBox" class="ew-input" type="date" name="name" value="" placeholder="Date of Birth" />
+        </div>
+        <div class="input-wrapper">
+            <label>Password</label>
+            <input data-bind="textInput: passwordTextBox" class="ew-input" type="password" name="name" value="" placeholder="Password" />
+        </div>
+        <div class="input-wrapper">
+            <label>Confirm Password</label>
+            <input data-bind="textInput: confirmPasswordTextBox" class="ew-input" type="password" name="name" value="" placeholder="Confirm Password" />
+        </div>
+    </div>
+    <div class="register-submit">
+        <button data-bind="enable: isButtonEnabled() && !isAjaxCallRunning(), click: registerAction" class="ew-btn">
+            <div data-bind="visible: isAjaxCallRunning" class="loader"></div>
+            <div>Sign Up</div>
+        </button>
+    </div>
+</div>
+
+<script src="~/js/register.js"></script>
+<script type="text/javascript">
+    EventWorld.Register.init();
+</script>
+

@@ -5,6 +5,11 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\lib\alertify\css\semantic.css" />
+    <Content Remove="wwwroot\lib\alertify\css\semantic.rtl.css" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -17,6 +22,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EventWorld.Services\EventWorld.Services.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\alertify\css\" />
+    <Folder Include="wwwroot\lib\alertify\js\" />
   </ItemGroup>
 
 </Project>

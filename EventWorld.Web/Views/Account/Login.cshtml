@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="login-container" id="login-model">
+    <div class="login-title">
+        <h1>Sign in to discover more</h1>
+        <h5 class="login-subtitle">All the game events are waiting for you!</h5>
+    </div>
+    <div class="login-inputs">
+        <div class="input-wrapper">
+            <input data-bind="textInput: emailTextBox" class="ew-input" type="email" placeholder="Email" />
+        </div>
+        <div class="input-wrapper">
+            <input data-bind="textInput: passwordTextBox" class="ew-input" type="password" placeholder="Password" />
+        </div>
+    </div>
+    <div class="login-signup">
+        Don't have an Account? <a class="anchor" href="Register">Sign up here!</a>
+    </div>
+    <div class="login-submit">
+        <button data-bind="enable: isButtonEnabled() && !isAjaxCallRunning(), click: loginAction" class="ew-btn">
+            <div data-bind="visible: isAjaxCallRunning" class="loader"></div>
+            <div>Continue</div>
+        </button>
+    </div>
+</div>
+
+<script src="~/js/login.js"></script>
+<script type="text/javascript">
+    EventWorld.Login.init();
+</script>
