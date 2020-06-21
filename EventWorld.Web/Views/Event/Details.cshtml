@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="ew-events" id="event-model">
+    <div data-bind="callFunction: getEvent" class="event-details-container">
+        <h1 class="event-title" data-bind="text: event().title"></h1>
+        <img class="event-img" data-bind="attr: { 'src': event().imagePath }" />
+        <div class="event-details">
+            <h4 class="event-description" data-bind="text: event().description"></h4>
+            <h6 class="event-location" data-bind="text: 'Location: ' + event().location"></h6>
+            <h6 class="date-event" data-bind="text: 'Date of event: ' + event().date"></h6>
+            <h6 class="event-age" data-bind="text: 'Age required: ' + event().ageRequired"></h6>
+        </div>
+
+        <!-- ko if: event().creatorUserId == $("#id").val() && $("#is-admin").val() !== "True" -->
+        <div class="event-details-btn">
+            <button data-bind="disable: isAjaxCallRunning, click: goToApproveAttends" class="ew-btn approve-btn">
+                <div data-bind="visible: isAjaxCallRunning" class="loader"></div>
+                <div>Approve attends</div>
+            </button>
+            <button data-bind="disable: isAjaxCallRunning, click: deleteEvent" class="ew-btn">
+                <div data-bind="visible: isAjaxCallRunning" class="loader"></div>
+                <div>Delete event</div>
+            </button>
+        </div>
+        <!-- /ko -->
+        <!-- ko if: event().creatorUserId != $("#id").val() && $("#is-admin").val() !== "True" -->
+        <div class="event-details-btn">
+            <button data-bind="disable: isAjaxCallRunning, css: { 'attending' : isUserAttending }, click: attendEvent" class="ew-btn">
+                <div data-bind="visible: isAjaxCallRunning" class="loader"></div>
+                <div>Attend event</div>
+            </button>
+        </div>
+        <!-- /ko -->
+        <!-- ko if: $("#is-admin").val() === "True" && !event().isApproved -->
+        <div class="event-details-btn">
+            <button data-bind="disable: isAjaxCallRunning, click: approveEvent" class="ew-btn approve-btn">
+                <div data-bind="visible: isAjaxCallRunning" class="loader"></div>
+                <div>Approve event</div>
+            </button>
+            <button data-bind="disable: isAjaxCallRunning, click: rejectEvent" class="ew-btn">
+                <div data-bind="visible: isAjaxCallRunning" class="loader"></div>
+                <div>Reject event</div>
+            </button>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+
+<script src="~/js/eventDetails.js"></script>
+<script type="text/javascript">
+    EventWorld.EventDetails.init();
+</script>

@@ -16,7 +16,11 @@ namespace EventWorld.Data.Entities
         public string Description { get; set; }
 
         [Required]
+        public long CreatorUserId { get; set; }
+
+        [Required]
         public virtual long EventTypeId { get; set; }
+
         public virtual EventType EventType { get; set; }
 
         [Required]
@@ -27,6 +31,12 @@ namespace EventWorld.Data.Entities
 
         [Required]
         public int AgeRequired { get; set; }
+
+        [Required]
+        public bool IsApproved { get; set; }
+
+        [Required]
+        public bool Deleted { get; set; }
 
         public virtual ICollection<EventGuest> EventGuests { get; set; }
     }

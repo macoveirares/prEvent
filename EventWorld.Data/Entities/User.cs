@@ -22,10 +22,16 @@ namespace EventWorld.Data.Entities
         public string Password { get; set; }
 
         [Required]
+        public int Rating { get; set; }
+
+        [Required]
         public DateTime DateOfBirth { get; set; }
 
         [Required]
         public bool IsEventAdmin { get; set; }
+
+        [Required]
+        public bool Deleted { get; set; }
 
         public virtual ICollection<EventGuest> EventGuests { get; set; }
     }

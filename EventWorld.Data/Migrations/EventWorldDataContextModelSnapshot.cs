@@ -27,12 +27,18 @@ namespace EventWorld.Data.Migrations
 
                     b.Property<int>("AgeRequired");
 
+                    b.Property<long>("CreatorUserId");
+
                     b.Property<DateTime>("Date");
+
+                    b.Property<bool>("Deleted");
 
                     b.Property<string>("Description")
                         .IsRequired();
 
                     b.Property<long>("EventTypeId");
+
+                    b.Property<bool>("IsApproved");
 
                     b.Property<string>("Location")
                         .IsRequired();
@@ -53,6 +59,12 @@ namespace EventWorld.Data.Migrations
 
                     b.Property<long>("UserId");
 
+                    b.Property<bool>("Deleted");
+
+                    b.Property<bool>("IsApproved");
+
+                    b.Property<bool>("ReceivedFeedback");
+
                     b.HasKey("EventId", "UserId");
 
                     b.HasIndex("UserId");
@@ -66,12 +78,39 @@ namespace EventWorld.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ImagePath")
+                        .IsRequired();
+
                     b.Property<string>("Name")
                         .IsRequired();
 
                     b.HasKey("Id");
 
                     b.ToTable("EventTypes");
+                });
+
+            modelBuilder.Entity("EventWorld.Data.Entities.Message", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<long>("EventId");
+
+                    b.Property<string>("Text")
+                        .IsRequired();
+
+                    b.Property<long>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("EventWorld.Data.Entities.User", b =>
@@ -81,6 +120,8 @@ namespace EventWorld.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("DateOfBirth");
+
+                    b.Property<bool>("Deleted");
 
                     b.Property<string>("Email")
                         .IsRequired();
@@ -95,6 +136,8 @@ namespace EventWorld.Data.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired();
+
+                    b.Property<int>("Rating");
 
                     b.HasKey("Id");
 
@@ -118,6 +161,19 @@ namespace EventWorld.Data.Migrations
 
                     b.HasOne("EventWorld.Data.Entities.User", "User")
                         .WithMany("EventGuests")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("EventWorld.Data.Entities.Message", b =>
+                {
+                    b.HasOne("EventWorld.Data.Entities.Event", "Event")
+                        .WithMany()
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("EventWorld.Data.Entities.User", "User")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

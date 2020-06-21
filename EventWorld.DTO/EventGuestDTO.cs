@@ -5,5 +5,7 @@
         public long EventId { get; set; }
 
         public long UserId { get; set; }
+
+        public bool IsApproved { get; set; }
     }
 }

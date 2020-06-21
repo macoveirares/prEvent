@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "Approve Events";
+}
+
+<div class="ew-events" id="events-to-approve-model">
+    <div class="events-header">
+        <div class="events-title">
+            <h1>Events to approve</h1>
+            <button data-bind="click: goToEventList" class="ew-btn non-form-btn">Go back to events</button>
+        </div>
+    </div>
+
+    <hr data-bind="callFunction: getEvents" />
+
+    <!-- ko if: events().length == 0 && !isAjaxCallRunning() -->
+    <h2 class="no-events-text">No events to approve</h2>
+    <!-- /ko -->
+
+    <div data-bind="foreach: events" class="events-container">
+        <div data-bind="click: $parent.goToDetails, " class="event-container">
+            <img data-bind="attr: { 'src': $rawData.imagePath }" class="event-image" />
+            <h5 data-bind="text: $rawData.title"></h5>
+            <h6 data-bind="text: $rawData.location"></h6>
+            <div class="event-date" data-bind="text: $rawData.date"></div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/approveEventsList.js"></script>
+<script type="text/javascript">
+    EventWorld.ApproveEventsList.init();
+</script>

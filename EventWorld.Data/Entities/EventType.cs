@@ -9,5 +9,8 @@ namespace EventWorld.Data.Entities
 
         [Required]
         public string Name { get; set; }
+
+        [Required]
+        public string ImagePath { get; set; }
     }
 }

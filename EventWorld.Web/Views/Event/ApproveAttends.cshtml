@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Approve Enrollment";
+}
+
+<div class="ew-events" id="enrollments-to-approve-model">
+    <div class="events-header">
+        <div class="events-title">
+            <h1>Approve enrollments</h1>
+            <button data-bind="click: goToEventList" class="ew-btn non-form-btn">Go back to events</button>
+        </div>
+    </div>
+
+    <hr data-bind="callFunction: getUsers" />
+
+    <!-- ko if: users().length == 0 -->
+    <h2 class="no-events-text">No enrollments to approve</h2>
+    <!-- /ko -->
+
+    <div data-bind="foreach: users" class="events-container">
+        <div class="enrollment-approve">
+            <h5 data-bind="text: $rawData.firstName + ' ' + $rawData.lastName"></h5>
+            <h6 data-bind="text: $rawData.age"></h6>
+            <div class="rating">
+                <span data-bind="css: { 'filled' : $rawData.rating > 4}">☆</span>
+                <span data-bind="css: { 'filled' : $rawData.rating > 3}">☆</span>
+                <span data-bind="css: { 'filled' : $rawData.rating > 2}">☆</span>
+                <span data-bind="css: { 'filled' : $rawData.rating > 1}">☆</span>
+                <span data-bind="css: { 'filled' : $rawData.rating > 0}">☆</span>
+            </div>
+            <div class="enrollment-buttons">
+                <button data-bind="click: $parent.approveEnrollment" class="ew-btn approve-btn enrollment-btn">Approve</button>
+                <button data-bind="click: $parent.rejectEnrollment" class="ew-btn right-btn enrollment-btn">Reject</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/approveEnrollments.js"></script>
+<script type="text/javascript">
+    EventWorld.ApproveEnrollments.init();
+</script>

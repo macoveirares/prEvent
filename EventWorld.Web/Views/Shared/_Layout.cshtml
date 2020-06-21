@@ -39,6 +39,7 @@
         </script>
     </environment>
     <script src="~/lib/knockout/knockout.js" asp-append-version="true"></script>
+    <script src="~/lib/knockout/koBindings.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 </head>
 <body>
@@ -53,7 +54,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Events</a>
+                            <div class="nav-auth">
+                                <a class="nav-link" asp-area="" asp-controller="Event" asp-action="List">Events</a>
+                                <a class="nav-link nav-chat" asp-area="" asp-controller="Message" asp-action="Chat">Chat</a>
+                            </div>
                         </li>
                         <!-- ko ifnot: isAuthenticated -->
                         <li class="nav-item">
@@ -62,7 +66,12 @@
                         <!-- /ko -->
                         <!-- ko if: isAuthenticated -->
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="LogOut">Log out</a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-auth">
+                                <a class="nav-link nav-profile" asp-area="" asp-controller="User" asp-action="UserProfile">@(User.Claims.Count() != 0 ? User.Claims.Where(x => x.Type == "FirstName").Select(x => x.Value).FirstOrDefault() : "")</a>
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="LogOut">Log out</a>
+                            </div>
                         </li>
                         <!-- /ko -->
                     </ul>

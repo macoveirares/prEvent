@@ -1,0 +1,19 @@
+﻿namespace EventWorld.Web.Models
+{
+    public class UserProfileModel
+    {
+        public long Id { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string Email { get; set; }
+
+        public int Rating { get; set; }
+
+        public string Age { get; set; }
+
+        public bool IsEventAdmin { get; set; }
+    }
+}

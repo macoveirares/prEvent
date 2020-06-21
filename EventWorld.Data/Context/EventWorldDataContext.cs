@@ -9,6 +9,7 @@ namespace EventWorld.Data.Context
         public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<EventType> EventTypes { get; set; }
         public virtual DbSet<EventGuest> EventGuests { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
 
         public EventWorldDataContext(DbContextOptions<EventWorldDataContext> options) : base(options)
         {
@@ -21,6 +22,7 @@ namespace EventWorld.Data.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseLazyLoadingProxies();
         }
 
 

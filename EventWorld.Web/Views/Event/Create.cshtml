@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "Create Event";
+}
+
+<div class="ew-create-event" id="create-model">
+    <div class="create-event-header">
+        <h1>Create a new event</h1>
+        <h5>Organize an event using our App</h5>
+    </div>
+    <div class="form-container">
+        <div class="form-inputs">
+            <div class="input-wrapper">
+                <label>Title</label>
+                <input data-bind="textInput: titleTextBox" class="ew-input" type="text" name="name" value="" />
+            </div>
+            <div class="input-wrapper">
+                <label>Description</label>
+                <textarea data-bind="textInput: descriptionTextBox" class="ew-input" rows="4"></textarea>
+            </div>
+            <div data-bind="callFunction: getCategories" class="input-wrapper">
+                <label>Category</label>
+                <select data-bind="textInput: categoryDropDown, options: categories, optionsText: 'name', optionsValue: 'id', optionsCaption:'Select a category...'" class="ew-dropdown"></select>
+            </div>
+            <div class="input-wrapper">
+                <label>Date</label>
+                <input data-bind="textInput: dateTextBox" class="ew-input" type="datetime-local" name="name" value="" />
+            </div>
+            <div class="input-wrapper">
+                <label>Location</label>
+                <input data-bind="textInput: locationTextBox" class="ew-input" type="text" name="name" value="" />
+            </div>
+            <div class="input-wrapper">
+                <label>Age required</label>
+                <input data-bind="textInput: ageRequiredTextBox" class="ew-input" type="text" name="name" value="" maxlength="2" />
+            </div>
+            <button data-bind="enable: isButtonEnabled, click: createEvent" class="ew-btn create-btn">Submit</button>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/createEvent.js"></script>
+<script type="text/javascript">
+    EventWorld.CreateEvent.init();
+</script>

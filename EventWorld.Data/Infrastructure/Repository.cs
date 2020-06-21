@@ -34,16 +34,6 @@ namespace EventWorld.Data.Infrastructure
             return dbset.ToList();
         }
 
-        public void Delete(T entity)
-        {
-            dbset.Remove(entity);
-        }
-
-        public void Delete(IEnumerable<T> entities)
-        {
-            dbset.RemoveRange(entities);
-        }
-
         public T GetById(long id)
         {
             return dbset.Find(id);

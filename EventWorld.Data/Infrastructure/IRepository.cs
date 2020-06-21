@@ -10,12 +10,8 @@ namespace EventWorld.Data.Infrastructure
         void Add(T entity);
         void Update(T entity);
         List<T> GetAll();
-        void Delete(T entity);
-        void Delete(IEnumerable<T> entities);
         T GetById(long id);
-
         IEnumerable<T> Get(Expression<Func<T, bool>> where);
-
         IQueryable<T> Query();
     }
 }

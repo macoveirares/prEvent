@@ -13,5 +13,14 @@ namespace EventWorld.Data.Entities
         public virtual long UserId { get; set; }
 
         public virtual User User { get; set; }
+
+        [Required]
+        public bool IsApproved { get; set; }
+
+        [Required]
+        public bool ReceivedFeedback { get; set; }
+
+        [Required]
+        public bool Deleted { get; set; }
     }
 }

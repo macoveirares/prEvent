@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "Chat";
+}
+
+<div class="ew-events" id="chat-model">
+    <div class="chat-container" data-bind="callFunction: getEvents">
+        <div class="chat-left">
+            <div class="chat-header">
+                <h1>Chat</h1>
+                <h4>Interact with your opponents and have a nice conversation!</h4>
+                <!-- ko if: currentEventId() !== "" -->
+                <textarea data-bind="textInput: messageTextBox, enterkey: sendMessage" class="ew-input send-message" placeholder="Send a message"></textarea>
+                <!-- /ko -->
+                <!-- ko if: events().length === 0 -->
+                <h5 class="no-chat">Enroll to any event in order to have access to event chat!</h5>
+                <!-- /ko -->
+                <div class="chat-messages" data-bind="foreach: messages">
+                    <div class="message" data-bind="attr: { 'data-message-id' : $rawData.id}, css: { 'right-message' : $rawData.userId != $('#id').val() }">
+                        <div class="message-text">
+                            <div class="message-name" data-bind="text: $rawData.name + ':', click: $parent.goToProfile"></div>
+                            <div style="margin-left: .3125rem;" data-bind="text: $rawData.text"></div>
+                        </div>
+                        <p class="message-time" data-bind="text: $rawData.time"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ko if: events().length !== 0 -->
+        <div class="chat-right" data-bind="foreach: events">
+            <p class="chat-event" data-bind="text: $rawData.title, attr: { 'data-event-id': $rawData.id }, click: $parent.getEventMessages"></p>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+
+<script src="~/js/chat.js"></script>
+<script type="text/javascript">
+    EventWorld.Chat.init();
+</script>

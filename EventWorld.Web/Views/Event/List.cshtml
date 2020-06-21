@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewData["Title"] = "Events";
+}
+
+<div class="ew-events" id="events-model">
+    <div class="events-header">
+        <div class="events-title">
+            <h1>Events List</h1>
+            <div class="list-buttons">
+                <button data-bind="click: goToCreateEvent" class="ew-btn non-form-btn">Create new Event</button>
+                <!-- ko if: $("#is-admin").val() === "True" -->
+                <button data-bind="click: goToApproveEvents" class="ew-btn non-form-btn">Approve Events</button>
+                <!-- /ko -->
+            </div>
+        </div>
+        <h5 class="events-subtitle">Search for any event you are interested!</h5>
+        <div data-bind="callFunction: getCategories" class="events-filter">
+            <input data-bind="textInput: searchTextBox" class="ew-input search-input" type="text" value="" placeholder="Search..." />
+            <select data-bind="textInput: categoryDropDown, options: categories, optionsText: 'name', optionsValue: 'id', optionsCaption:'Select a category...'" class="ew-dropdown categories-dropdown"></select>
+        </div>
+    </div>
+
+    <hr data-bind="callFunction: getEvents" />
+
+    <!-- ko if: events().length == 0 && !isAjaxCallRunning() -->
+    <h2 class="no-events-text">No upcoming events</h2>
+    <!-- /ko -->
+
+    <div data-bind="foreach: events" class="events-container">
+        <div data-bind="click: $parent.goToDetails, " class="event-container">
+            <img data-bind="attr: { 'src': $rawData.imagePath }" class="event-image" />
+            <h5 data-bind="text: $rawData.title"></h5>
+            <h6 data-bind="text: $rawData.location"></h6>
+            <div class="event-date" data-bind="text: $rawData.date"></div>
+        </div>
+    </div>
+
+    <!-- ko if: isAjaxCallRunning -->
+    <div class="events-loader">
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+    </div>
+    <!-- /ko -->
+</div>
+
+<script src="~/js/eventsList.js"></script>
+<script type="text/javascript">
+    EventWorld.EventsList.init();
+</script>

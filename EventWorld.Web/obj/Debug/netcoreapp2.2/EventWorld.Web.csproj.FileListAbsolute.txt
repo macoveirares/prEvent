@@ -15,7 +15,6 @@ D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\EventWorld.Web.TagHelpers.inpu
 D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\EventWorld.Web.TagHelpers.output.cache
 D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\EventWorld.Web.RazorCoreGenerate.cache
 D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
-D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
 D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
 D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
 D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.g.cshtml.cs
@@ -35,4 +34,12 @@ D:\Licenta\EventWorld.Web\bin\Debug\netcoreapp2.2\EventWorld.Services.pdb
 D:\Licenta\EventWorld.Web\bin\Debug\netcoreapp2.2\EventWorld.Data.pdb
 D:\Licenta\EventWorld.Web\bin\Debug\netcoreapp2.2\EventWorld.DTO.pdb
 D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Account\Login.g.cshtml.cs
+D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Event\List.g.cshtml.cs
 D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Account\Register.g.cshtml.cs
+D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Event\Create.g.cshtml.cs
+D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Event\Details.g.cshtml.cs
+D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\User\UserProfile.g.cshtml.cs
+D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Event\ApproveList.g.cshtml.cs
+D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Event\ApproveAttends.g.cshtml.cs
+D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Event\Feedback.g.cshtml.cs
+D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Message\Chat.g.cshtml.cs

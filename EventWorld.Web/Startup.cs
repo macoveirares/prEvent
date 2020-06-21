@@ -33,6 +33,10 @@ namespace EventWorld.Web
             services.AddIdentityCore<UserDTO>(options => { });
             services = ServicesDependencyMapper.GetDependencies(services, Configuration);
             services.AddAuthentication("cookies").AddCookie("cookies", options => options.LoginPath = "/Account/SignIn");
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy => policy.RequireClaim("HasAdminRights"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

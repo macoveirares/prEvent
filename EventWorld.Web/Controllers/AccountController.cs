@@ -39,6 +39,10 @@ namespace EventWorld.Web.Controllers
                 identity.AddClaim(new Claim("Email", user.Email));
                 identity.AddClaim(new Claim("Id", user.Id.ToString()));
                 identity.AddClaim(new Claim("IsAdmin", user.IsEventAdmin.ToString()));
+                if (user.IsEventAdmin)
+                {
+                    identity.AddClaim(new Claim("HasAdminRights", user.IsEventAdmin.ToString()));
+                }
                 var principal = new ClaimsPrincipal(identity);
 
                 await HttpContext.SignInAsync("cookies", new ClaimsPrincipal(identity));

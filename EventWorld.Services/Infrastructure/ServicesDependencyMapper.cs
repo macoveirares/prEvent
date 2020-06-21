@@ -1,6 +1,9 @@
 ﻿using EventWorld.Data.Infrastructure;
 using EventWorld.DTO;
 using EventWorld.Services.Logic;
+using EventWorld.Services.Services.Events;
+using EventWorld.Services.Services.EventTypes;
+using EventWorld.Services.Services.Messages;
 using EventWorld.Services.Services.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -16,6 +19,9 @@ namespace EventWorld.Services.Infrastructure
             services = DataDependencyMapper.GetDependencies(services, configuration);
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IEventService, EventService>();
+            services.AddScoped<IEventTypeService, EventTypeService>();
+            services.AddScoped<IMessageService, MessageService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped<IUserStore<UserDTO>, UserStore>();

@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "User Profile";
+}
+
+<div class="ew-profile" id="user-profile-model">
+    <div class="user-info" data-bind="callFunction: getUser">
+        <div class="user-name">
+            <h2 data-bind="text: user().firstName + ' ' + user().lastName"></h2>
+            <h5 data-bind="text: user().age"></h5>
+        </div>
+        <div class="user-rating">
+            <div class="rating-text">RATING</div>
+            <div class="rating">
+                <span data-bind="css: { 'filled' : user().rating > 4}">☆</span>
+                <span data-bind="css: { 'filled' : user().rating > 3}">☆</span>
+                <span data-bind="css: { 'filled' : user().rating > 2}">☆</span>
+                <span data-bind="css: { 'filled' : user().rating > 1}">☆</span>
+                <span data-bind="css: { 'filled' : user().rating > 0}">☆</span>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="events-info">
+        <!-- ko if: userUpcomingEvents().length > 0 -->
+        <h2 class="my-events-title">My Upcoming Events</h2>
+        <div data-bind="foreach: userUpcomingEvents" class="upcoming-events">
+            <div class="profile-event-container">
+                <img data-bind="attr: { 'src': $rawData.imagePath }" class="event-image" />
+                <h5 data-bind="text: $rawData.title"></h5>
+                <div class="event-date" data-bind="text: $rawData.date"></div>
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- ko if: userAttendedEvents().length > 0 -->
+        <h2></h2>
+        <div data-bind="foreach: userAttendedEvents" class="attended-events">
+            <div class="event-container">
+                <img data-bind="attr: { 'src': $rawData.imagePath }" class="event-image" />
+                <h4 data-bind="text: $rawData.title"></h4>
+                <h6 data-bind="text: $rawData.date"></h6>
+            </div>
+        </div>
+        <!-- /ko -->
+
+    </div>
+</div>
+
+<script src="~/js/userProfile.js"></script>
+<script type="text/javascript">
+    EventWorld.UserProfile.init();
+</script>

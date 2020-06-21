@@ -28,6 +28,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\lib\alertify\css\" />
     <Folder Include="wwwroot\lib\alertify\js\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
 </Project>

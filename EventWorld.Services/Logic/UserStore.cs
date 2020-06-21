@@ -45,7 +45,7 @@ namespace EventWorld.Services.Logic
 
         public Task<UserDTO> FindByIdAsync(string userId, CancellationToken cancellationToken)
         {
-            var userEntity = _userService.GetByID(Convert.ToInt64(userId));
+            var userEntity = _userService.GetById(Convert.ToInt64(userId));
             if (userEntity == null)
                 return Task.FromResult<UserDTO>(null);
             return Task.FromResult(userEntity);
