@@ -28,8 +28,13 @@ EventWorld.Login = (function ($, ko, alertify) {
                 },
                 success: function (result) {
                     self.isAjaxCallRunning(false);
-                    if (result === true) {
-                        window.location.href = "/Home/Index";
+                    if (result.isSuccess === true) {
+                        if (result.eventId) {
+                            window.location.href = "/Event/Feedback?id=" + result.eventId;
+                        }
+                        else {
+                            window.location.href = "/Home/Index";
+                        }
                     }
                     else {
                         alertify.alert(result.error);

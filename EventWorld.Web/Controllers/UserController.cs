@@ -61,5 +61,11 @@ namespace EventWorld.Web.Controllers
             var eventModels = events.Select(x => (ChatEventModel)new ChatEventModel().InjectFrom(x)).ToList();
             return Json(eventModels);
         }
+
+        public JsonResult GetUsersEnrollmentsAnalysis()
+        {
+            var usersEnrollmentsCountByMonth = _userService.GetUsersEnrollmentsCountByMonth();
+            return Json(usersEnrollmentsCountByMonth);
+        }
     }
 }

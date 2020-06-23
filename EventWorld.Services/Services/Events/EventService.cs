@@ -17,12 +17,15 @@ namespace EventWorld.Services.Services.Events
         void RejectEnrollment(long eventId, long userId);
         void AttendEvent(long userId, long eventId);
         bool CheckIfUserAttendsEvent(long userId, long eventId);
+        long GetUserYesterdayEvent(long userId);
         EventDTO GetById(long eventId);
         List<EventDTO> GetEvents(string searchTerm, long categoryId, int skip, int take);
         List<EventDTO> GetUserAttendedEvents(long userId);
         List<EventDTO> GetUserUpcomingEvents(long userId);
+        List<EventDTO> GetFirstThreeUpcomingEvents();
         List<EventDTO> GetEventsToApprove();
         List<UserDTO> GetEventAttendes(long id, bool isApproved);
+        List<int> GetEventsCountByMonth();
     }
 
     public class EventService : IEventService
@@ -30,6 +33,22 @@ namespace EventWorld.Services.Services.Events
         private readonly IRepository<Event> _repository;
         private readonly IRepository<EventGuest> _eventGuestRepository;
         private readonly IUnitOfWork _unitOfWork;
+
+        private Dictionary<string, int> EventCountPerMonth = new Dictionary<string, int>
+        {
+            { "1", 0 },
+            { "2", 0 },
+            { "3", 0 },
+            { "4", 0 },
+            { "5", 0 },
+            { "6", 0 },
+            { "7", 0 },
+            { "8", 0 },
+            { "9", 0 },
+            { "10", 0 },
+            { "11", 0 },
+            { "12", 0 }
+        };
 
         public EventService(IRepository<Event> repository, IRepository<EventGuest> eventGuestRepository, IUnitOfWork unitOfWork)
         {
@@ -158,11 +177,29 @@ namespace EventWorld.Services.Services.Events
             && !x.Deleted
             && x.IsApproved
             && x.Date > DateTime.Now)
-            .OrderByDescending(x => x.Date)
+            .OrderBy(x => x.Date)
             .Take(4)
             .ToList();
 
             return userEvents.Select(x =>
+            {
+                var eventDto = (EventDTO)new EventDTO().InjectFrom(x);
+                eventDto.EventType = (EventTypeDTO)new EventTypeDTO().InjectFrom(x.EventType);
+                return eventDto;
+            }).ToList();
+        }
+
+        public List<EventDTO> GetFirstThreeUpcomingEvents()
+        {
+            var events = _repository.Query()
+                .Where(x => !x.Deleted
+            && x.IsApproved
+            && x.Date > DateTime.Now)
+            .OrderBy(x => x.Date)
+            .Take(3)
+            .ToList();
+
+            return events.Select(x =>
             {
                 var eventDto = (EventDTO)new EventDTO().InjectFrom(x);
                 eventDto.EventType = (EventTypeDTO)new EventTypeDTO().InjectFrom(x.EventType);
@@ -195,6 +232,36 @@ namespace EventWorld.Services.Services.Events
                 .FirstOrDefault();
             eventGuest.Deleted = true;
             _unitOfWork.Commit();
+        }
+
+        public long GetUserYesterdayEvent(long userId)
+        {
+            var yesterday = DateTime.Now.AddDays(-1);
+            return _repository.Query()
+                .Where(x => !x.Deleted
+                && x.CreatorUserId == userId
+                && x.IsApproved
+                && x.Date.Day == yesterday.Day)
+                .Select(x => x.Id)
+                .FirstOrDefault();
+        }
+
+        public List<int> GetEventsCountByMonth()
+        {
+            var currentYear = DateTime.Now.Year;
+            var eventCounts = _repository.Query()
+                .Where(x => !x.Deleted
+                && x.IsApproved
+                && x.Date.Year == currentYear)
+                .GroupBy(x => x.Date.Month)
+                .Select(x => new { month = x.Key, count = x.Count() })
+                .ToList();
+            foreach (var eventCount in eventCounts)
+            {
+                EventCountPerMonth[eventCount.month.ToString()] = eventCount.count;
+            }
+
+            return EventCountPerMonth.Select(x => x.Value).ToList();
         }
     }
 }

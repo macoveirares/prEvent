@@ -1,5 +1,6 @@
 ﻿using EventWorld.DTO;
 using EventWorld.Services.Infrastructure;
+using EventWorld.Web.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -37,6 +38,8 @@ namespace EventWorld.Web
             {
                 options.AddPolicy("AdminOnly", policy => policy.RequireClaim("HasAdminRights"));
             });
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +60,11 @@ namespace EventWorld.Web
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/chathub");
+            });
 
             app.UseMvc(routes =>
             {

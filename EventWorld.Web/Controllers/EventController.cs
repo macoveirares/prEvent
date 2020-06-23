@@ -37,6 +37,12 @@ namespace EventWorld.Web.Controllers
             return View();
         }
 
+        [Authorize(Policy = "AdminOnly")]
+        public IActionResult Analytics()
+        {
+            return View();
+        }
+
         public IActionResult Create()
         {
             return View();
@@ -167,6 +173,8 @@ namespace EventWorld.Web.Controllers
             return Json(userModels);
         }
 
+
+
         [HttpPost]
         public JsonResult ApproveEnrollment(long eventId, long userId)
         {
@@ -179,6 +187,12 @@ namespace EventWorld.Web.Controllers
         {
             _eventService.RejectEnrollment(eventId, userId);
             return Json(true);
+        }
+
+        public JsonResult GetEventsAnalysis()
+        {
+            var eventsCountByMonth = _eventService.GetEventsCountByMonth();
+            return Json(eventsCountByMonth);
         }
     }
 }

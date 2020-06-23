@@ -43,3 +43,4 @@ D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Event\ApproveList.
 D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Event\ApproveAttends.g.cshtml.cs
 D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Event\Feedback.g.cshtml.cs
 D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Message\Chat.g.cshtml.cs
+D:\Licenta\EventWorld.Web\obj\Debug\netcoreapp2.2\Razor\Views\Event\Analytics.g.cshtml.cs

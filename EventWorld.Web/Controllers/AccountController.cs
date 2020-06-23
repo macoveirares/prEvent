@@ -1,4 +1,5 @@
 ﻿using EventWorld.DTO;
+using EventWorld.Services.Services.Events;
 using EventWorld.Web.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
@@ -15,10 +16,12 @@ namespace EventWorld.Web.Controllers
     public class AccountController : Controller
     {
         private readonly UserManager<UserDTO> _userManager;
+        private readonly IEventService _eventService;
 
-        public AccountController(UserManager<UserDTO> userManager)
+        public AccountController(UserManager<UserDTO> userManager, IEventService eventService)
         {
             _userManager = userManager;
+            _eventService = eventService;
         }
 
         public IActionResult SignIn()
@@ -46,9 +49,10 @@ namespace EventWorld.Web.Controllers
                 var principal = new ClaimsPrincipal(identity);
 
                 await HttpContext.SignInAsync("cookies", new ClaimsPrincipal(identity));
-                return Json(true);
+                var eventId = _eventService.GetUserYesterdayEvent(user.Id);
+                return Json(new { isSuccess = true, eventId });
             }
-            return Json(new { error = "Email or password incorrect" });
+            return Json(new { isSuccess = false, error = "Email or password incorrect" });
         }
 
         public async Task<IActionResult> LogOut()

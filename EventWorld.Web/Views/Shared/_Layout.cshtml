@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/lib/alertify/css/alertify.css" />
         <link rel="stylesheet" href="~/lib/alertify/css/default.css" />
+        <link rel="stylesheet" href="~/lib/chartjs/css/chart.css" />
     </environment>
 
     <environment exclude="Development">
@@ -41,6 +42,8 @@
     <script src="~/lib/knockout/knockout.js" asp-append-version="true"></script>
     <script src="~/lib/knockout/koBindings.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/signalr/dist/browser/signalr.js" asp-append-version="true"></script>
+    <script src="~/lib/chartjs/js/chart.js" asp-append-version="true"></script>
 </head>
 <body>
     <header id="ew-header">
@@ -56,7 +59,10 @@
                         <li class="nav-item">
                             <div class="nav-auth">
                                 <a class="nav-link" asp-area="" asp-controller="Event" asp-action="List">Events</a>
-                                <a class="nav-link nav-chat" asp-area="" asp-controller="Message" asp-action="Chat">Chat</a>
+                                <a class="nav-link nav-extra-element" asp-area="" asp-controller="Message" asp-action="Chat">Chat</a>
+                                <!-- ko if: isAuthenticated() && isAdmin() -->
+                                <a class="nav-link nav-extra-element" asp-area="" asp-controller="Event" asp-action="Analytics">Analytics</a>
+                                <!-- /ko -->
                             </div>
                         </li>
                         <!-- ko ifnot: isAuthenticated -->

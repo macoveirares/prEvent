@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewData["Title"] = "Analytics";
+}
+
+
+
+<div class="ew-events" id="analytics-model">
+    <div class="analytics-container">
+        <div class="analytics-title">
+            <h1>Analytics</h1>
+        </div>
+        <div class="analytics-charts" data-bind="callFunction: getEventAnalysis">
+            <div data-bind="callFunction: getEnrollmentsAnalysis" class="analytics-top">
+                <div>
+                    <canvas id="eventsChart"></canvas>
+                </div>
+                <div>
+                    <canvas id="participantsChart"></canvas>
+                </div>
+            </div>
+            <div data-bind="callFunction: getMessagesAnalysis" class="analytics-bot">
+                <div>
+                    <canvas id="messagesChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/analytics.js"></script>
+<script type="text/javascript">
+    EventWorld.Analytics.init();
+</script>

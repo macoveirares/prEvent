@@ -8,6 +8,16 @@ EventWorld.Chat = (function ($, ko) {
         self.messageTextBox = ko.observable("");
         self.currentEventId = ko.observable("");
         self.messages = ko.observableArray([]);
+        self.signalRConnection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+        self.signalRConnection.on("ReceiveMessage", function (message) {
+            if (message.eventId === self.currentEventId()) {
+                self.messages.unshift(message);
+            }
+        });
+        self.signalRConnection.start().then(function () {
+        }).catch(function (err) {
+            return console.error(err.toString());
+        });
         self.getEvents = function () {
             $.ajax({
                 url: "/User/GetUserEnrolledEvents",
@@ -40,8 +50,10 @@ EventWorld.Chat = (function ($, ko) {
                     text: self.messageTextBox()
                 },
                 success: function (result) {
+                    self.signalRConnection.invoke("SendMessage", result).catch(function (err) {
+                        return console.error(err.toString());
+                    });
                     self.messageTextBox("");
-                    self.messages.unshift(result);
                 }
             });
         };
@@ -54,20 +66,6 @@ EventWorld.Chat = (function ($, ko) {
             }
         };
     }
-
-    ko.bindingHandlers.enterkey = {
-        init: function (element, valueAccessor, allBindings, viewModel) {
-            var callback = valueAccessor();
-            $(element).keypress(function (event) {
-                var keyCode = (event.which ? event.which : event.keyCode);
-                if (keyCode === 13) {
-                    callback.call(viewModel);
-                    return false;
-                }
-                return true;
-            });
-        }
-    };
 
     return {
         init: function () {

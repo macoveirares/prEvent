@@ -56,5 +56,11 @@ namespace EventWorld.Web.Controllers
             messageModel.Time = "now";
             return Json(messageModel);
         }
+
+        public JsonResult GetMessagesAnalysis()
+        {
+            var messagesCountByMonth = _messageService.GetMessagesCountByMonth();
+            return Json(messagesCountByMonth);
+        }
     }
 }

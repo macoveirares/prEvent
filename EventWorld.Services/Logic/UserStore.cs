@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EventWorld.Services.Logic
 {
-    public class UserStore : IUserStore<UserDTO>, IUserPasswordStore<UserDTO>, IUserEmailStore<UserDTO>
+    public class UserStore : IUserPasswordStore<UserDTO>, IUserEmailStore<UserDTO>
     {
         private readonly IUserService _userService;
         private readonly IUnitOfWork _unitOfWork;

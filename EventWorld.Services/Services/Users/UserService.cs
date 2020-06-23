@@ -16,6 +16,7 @@ namespace EventWorld.Services.Services.Users
         UserDTO GetById(long id);
         UserDTO GetByEmail(string email);
         List<EventDTO> GetUserEnrolledEvents(long userId);
+        List<int> GetUsersEnrollmentsCountByMonth();
     }
 
     public class UserService : IUserService
@@ -23,6 +24,22 @@ namespace EventWorld.Services.Services.Users
         private readonly IRepository<User> _repository;
         private readonly IRepository<EventGuest> _eventGuestRepository;
         private readonly IUnitOfWork _unitOfWork;
+
+        private Dictionary<string, int> UsersEnrollmentsCountPerMonth = new Dictionary<string, int>
+        {
+            { "1", 0 },
+            { "2", 0 },
+            { "3", 0 },
+            { "4", 0 },
+            { "5", 0 },
+            { "6", 0 },
+            { "7", 0 },
+            { "8", 0 },
+            { "9", 0 },
+            { "10", 0 },
+            { "11", 0 },
+            { "12", 0 }
+        };
 
         public UserService(IRepository<User> repository, IRepository<EventGuest> eventGuestRepository, IUnitOfWork unitOfWork)
         {
@@ -87,6 +104,24 @@ namespace EventWorld.Services.Services.Users
                 .FirstOrDefault();
             eventGuest.ReceivedFeedback = true;
             _unitOfWork.Commit();
+        }
+
+        public List<int> GetUsersEnrollmentsCountByMonth()
+        {
+            var currentYear = DateTime.Now.Year;
+            var usersEnrollmentsCounts = _eventGuestRepository.Query()
+                .Where(x => !x.Deleted
+                && x.IsApproved
+                && x.Event.Date.Year == currentYear)
+                .GroupBy(x => x.Event.Date.Month)
+                .Select(x => new { month = x.Key, count = x.Count() })
+                .ToList();
+            foreach (var usersEnrollmentsCount in usersEnrollmentsCounts)
+            {
+                UsersEnrollmentsCountPerMonth[usersEnrollmentsCount.month.ToString()] = usersEnrollmentsCount.count;
+            }
+
+            return UsersEnrollmentsCountPerMonth.Select(x => x.Value).ToList();
         }
     }
 }

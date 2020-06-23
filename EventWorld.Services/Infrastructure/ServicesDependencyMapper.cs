@@ -22,7 +22,6 @@ namespace EventWorld.Services.Infrastructure
             services.AddScoped<IEventService, EventService>();
             services.AddScoped<IEventTypeService, EventTypeService>();
             services.AddScoped<IMessageService, MessageService>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped<IUserStore<UserDTO>, UserStore>();
 
