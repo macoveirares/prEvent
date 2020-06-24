@@ -5,7 +5,6 @@ using EventWorld.Web.Helpers;
 using EventWorld.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Omu.ValueInjecter;
 using System;
 using System.Linq;
@@ -77,10 +76,12 @@ namespace EventWorld.Web.Controllers
 
             var errors = new StringBuilder();
 
-            foreach (var modelState in ModelState.Values)
+            foreach (var modelState in ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList())
             {
-                foreach (ModelError error in modelState.Errors)
+                foreach (var error in modelState)
+                {
                     errors.AppendLine(error.ErrorMessage);
+                }
             }
 
             return Json(errors.ToString());

@@ -10,7 +10,7 @@ EventWorld.Chat = (function ($, ko) {
         self.messages = ko.observableArray([]);
         self.signalRConnection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
         self.signalRConnection.on("ReceiveMessage", function (message) {
-            if (message.eventId === self.currentEventId()) {
+            if (message.eventId == self.currentEventId()) {
                 self.messages.unshift(message);
             }
         });

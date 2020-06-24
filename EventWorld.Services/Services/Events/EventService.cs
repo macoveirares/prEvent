@@ -241,7 +241,9 @@ namespace EventWorld.Services.Services.Events
                 .Where(x => !x.Deleted
                 && x.CreatorUserId == userId
                 && x.IsApproved
-                && x.Date.Day == yesterday.Day)
+                && x.Date.Day == yesterday.Day
+                && x.Date.Month == yesterday.Month
+                && x.Date.Year == yesterday.Year)
                 .Select(x => x.Id)
                 .FirstOrDefault();
         }
