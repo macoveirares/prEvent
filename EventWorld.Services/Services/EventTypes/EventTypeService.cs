@@ -2,6 +2,7 @@
 using EventWorld.Data.Infrastructure;
 using EventWorld.DTO;
 using Omu.ValueInjecter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,6 +11,7 @@ namespace EventWorld.Services.Services.EventTypes
     public interface IEventTypeService
     {
         List<EventTypeDTO> GetEventTypes();
+        string GetImageForEvent(long id);
     }
 
     public class EventTypeService : IEventTypeService
@@ -24,6 +26,14 @@ namespace EventWorld.Services.Services.EventTypes
         public List<EventTypeDTO> GetEventTypes()
         {
             return _repository.GetAll().Select(x => (EventTypeDTO)new EventTypeDTO().InjectFrom(x)).ToList();
+        }
+
+        public string GetImageForEvent(long id)
+        {
+            var imagePath = _repository.Query().Where(x => x.Id == id).Select(x => x.ImagePath).FirstOrDefault();
+            var images = imagePath.Split(';');
+            var randomNumber = new Random().Next(0, 3);
+            return images[randomNumber];
         }
     }
 }

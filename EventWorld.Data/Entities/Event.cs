@@ -24,6 +24,9 @@ namespace EventWorld.Data.Entities
         public virtual EventType EventType { get; set; }
 
         [Required]
+        public string ImagePath { get; set; }
+
+        [Required]
         public DateTime Date { get; set; }
 
         [Required]

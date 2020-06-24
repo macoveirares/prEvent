@@ -4,14 +4,16 @@ using EventWorld.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EventWorld.Data.Migrations
 {
     [DbContext(typeof(EventWorldDataContext))]
-    partial class EventWorldDataContextModelSnapshot : ModelSnapshot
+    [Migration("20200624173650_AddedEventImagePath")]
+    partial class AddedEventImagePath
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,8 +40,7 @@ namespace EventWorld.Data.Migrations
 
                     b.Property<long>("EventTypeId");
 
-                    b.Property<string>("ImagePath")
-                        .IsRequired();
+                    b.Property<long>("ImagePath");
 
                     b.Property<bool>("IsApproved");
 

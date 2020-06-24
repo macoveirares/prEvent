@@ -4,6 +4,9 @@
 
 <div class="ew-events" id="home-model">
     <div class="home-carousel" data-bind="callFunction: getEvents">
+        <div class="home-title">
+            <h1>Welcome to EventWorld!</h1>
+        </div>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -11,7 +14,7 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner" data-bind="foreach: events">
-                <div class="carousel-item" data-bind="css: {'active' : $rawData.isActive}">
+                <div class="carousel-item" data-bind="css: {'active' : $rawData.isActive}, click: $parent.goToEvent">
                     <img class="d-block w-100" data-bind="attr: {'src' : $rawData.imagePath}">
                     <div class="carousel-caption d-none d-md-block">
                         <h2 data-bind="text: $rawData.title"></h2>
@@ -26,6 +29,18 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
+        </div>
+    </div>
+    <div class="home-description">
+        <div class="home-text">
+            <div class="home-left">
+                <h3>What is EventWorld?</h3>
+                <h5>The best cross-platform for all types of games. Create or attend any event by just some clicks.</h5>
+            </div>
+            <div class="home-right">
+                <h3>Do your best!</h3>
+                <h5>Make a good impression at any event you're attending and receive a good feedback.</h5>
+            </div>
         </div>
     </div>
 </div>

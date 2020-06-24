@@ -70,6 +70,7 @@ namespace EventWorld.Web.Controllers
             {
                 var eventDto = (EventDTO)new EventDTO().InjectFrom(eventModel);
                 eventDto.CreatorUserId = Convert.ToInt64(HttpContext.User.FindFirstValue("Id"));
+                eventDto.ImagePath = _eventTypeService.GetImageForEvent(eventModel.EventTypeId);
                 _eventService.AddEvent(eventDto);
                 return Json(true);
             }
@@ -110,7 +111,6 @@ namespace EventWorld.Web.Controllers
             var eventDto = _eventService.GetById(id);
             var eventModel = (DetailsEventModel)new DetailsEventModel().InjectFrom(eventDto);
             eventModel.Date = eventDto.Date.ToString("dddd, dd MMMM yyyy HH:mm tt");
-            eventModel.ImagePath = eventDto.EventType.ImagePath;
             var isUserAttending = _eventService.CheckIfUserAttendsEvent(Convert.ToInt64(HttpContext.User.FindFirstValue("Id")), id);
             return Json(new { currentEvent = eventModel, isUserAttending });
         }

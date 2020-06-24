@@ -14,6 +14,9 @@ EventWorld.Home = (function ($, ko) {
                 }
             });
         };
+        self.goToEvent = function () {
+            window.location.href = "/Event/Details?id=" + this.id;
+        };
     }
 
     return {

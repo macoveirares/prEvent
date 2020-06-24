@@ -33,7 +33,7 @@ namespace EventWorld.Web.Controllers
             {
                 Id = x.Id,
                 Title = x.Title,
-                ImagePath = x.EventType.ImagePath,
+                ImagePath = x.ImagePath,
                 IsActive = false
             }).ToList();
             eventModels[0].IsActive = true;

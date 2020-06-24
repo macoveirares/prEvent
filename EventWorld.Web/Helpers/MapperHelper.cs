@@ -13,7 +13,6 @@ namespace EventWorld.Web.Helpers
             return events.Select(x =>
            {
                var eventModel = (ListEventModel)new ListEventModel().InjectFrom(x);
-               eventModel.ImagePath = x.EventType.ImagePath;
                eventModel.Date = x.Date.ToString("dddd, dd MMMM yyyy HH:mm tt");
                return eventModel;
            }).ToList();
