@@ -28,10 +28,15 @@
         <!-- /ko -->
         <!-- ko if: event().creatorUserId != $("#id").val() && $("#is-admin").val() !== "True" -->
         <div class="event-details-btn">
-            <button data-bind="disable: isAjaxCallRunning, css: { 'attending' : isUserAttending }, click: attendEvent" class="ew-btn">
+            <!-- ko if: isUserAttending -->
+            <h5>You're already attending this event!</h5>
+            <!-- /ko -->
+            <!-- ko ifnot: isUserAttending -->
+            <button data-bind="disable: isAjaxCallRunning, click: attendEvent" class="ew-btn">
                 <div data-bind="visible: isAjaxCallRunning" class="loader"></div>
                 <div>Attend event</div>
             </button>
+            <!-- /ko -->
         </div>
         <!-- /ko -->
         <!-- ko if: $("#is-admin").val() === "True" && !event().isApproved -->

@@ -424,7 +424,8 @@ hr {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    margin-right: 5rem;
+    margin-right: 3.45rem;
+    margin-bottom: 3.25rem;
 }
 
 .profile-event-container {
@@ -661,6 +662,7 @@ span.filled:before {
     flex-direction: column;
     justify-content: center;
     align-content: center;
+    margin-right: 3.45rem;
 }
 
 .enrollment-buttons{
@@ -806,4 +808,8 @@ span.filled:before {
 
 .carousel-item{
     cursor: pointer;
+}
+
+.upcoming-events{
+    display: flex;
 }

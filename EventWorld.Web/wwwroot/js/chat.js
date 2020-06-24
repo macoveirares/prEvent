@@ -28,6 +28,7 @@ EventWorld.Chat = (function ($, ko) {
             });
         };
         self.getEventMessages = function (data, event) {
+            $(".selected").removeClass("selected");
             $(event.currentTarget).addClass("selected");
             self.currentEventId($(event.currentTarget).attr("data-event-id"));
             $.ajax({

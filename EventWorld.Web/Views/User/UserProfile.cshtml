@@ -23,7 +23,7 @@
     <hr />
     <div class="events-info">
         <!-- ko if: userUpcomingEvents().length > 0 -->
-        <h2 class="my-events-title">My Upcoming Events</h2>
+        <h2 class="my-events-title">Upcoming Events</h2>
         <div data-bind="foreach: userUpcomingEvents" class="upcoming-events">
             <div class="profile-event-container">
                 <img data-bind="attr: { 'src': $rawData.imagePath }" class="event-image" />
@@ -33,12 +33,12 @@
         </div>
         <!-- /ko -->
         <!-- ko if: userAttendedEvents().length > 0 -->
-        <h2></h2>
+        <h2 style="margin-top:3.5rem;" class="my-events-title">Attended Events</h2>
         <div data-bind="foreach: userAttendedEvents" class="attended-events">
             <div class="event-container">
                 <img data-bind="attr: { 'src': $rawData.imagePath }" class="event-image" />
-                <h4 data-bind="text: $rawData.title"></h4>
-                <h6 data-bind="text: $rawData.date"></h6>
+                <h5 data-bind="text: $rawData.title"></h5>
+                <div class="event-date" data-bind="text: $rawData.date"></div>
             </div>
         </div>
         <!-- /ko -->

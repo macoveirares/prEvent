@@ -47,7 +47,7 @@ EventWorld.EventsList = (function ($, ko) {
                     }
 
                     if (!result.areMoreEvents) {
-                        RemoveScrollHandler();
+                        self.removeScrollHandler();
                     }
 
                 }
@@ -70,27 +70,29 @@ EventWorld.EventsList = (function ($, ko) {
             self.events([]);
             self.getEvents();
         });
-    }
+        self.addScrollHandler = function () {
+            $(window).bind('scroll', function (event) {
+                var win = $(this),
+                    doc = $(document),
+                    winH = win.height(),
+                    winT = win.scrollTop(),
+                    docH = doc.height(),
+                    interval = parseInt(winH * 0.2, 10);
 
-    function AddScrollHandler() {
-        $(window).scroll(function () {
-            var content_height = $(document).height();
-            var content_scroll_pos = $(window).scrollTop();
-            var percentage_value = content_scroll_pos * 100 / content_height;
+                if (docH - winH - winT < interval && !self.isAjaxCallRunning()) {
+                    self.getEvents();
+                }
 
-            if (percentage_value >= 80) {
-                self.getEvents();
-            }
-        });
-    }
-
-    function RemoveScrollHandler() {
-        $(window).unbind('scroll');
+            });
+        };
+        self.removeScrollHandler = function () {
+            $(window).unbind('scroll');
+        };
+        self.addScrollHandler();
     }
 
     return {
         init: function () {
-            AddScrollHandler();
             ko.applyBindings(new AppData(), document.getElementById("events-model"));
         }
     };

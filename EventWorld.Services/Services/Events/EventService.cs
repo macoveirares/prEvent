@@ -127,7 +127,7 @@ namespace EventWorld.Services.Services.Events
                 query = query.Skip(skip);
             }
 
-            var events = query.Take(take + 1).ToList();
+            var events = query.OrderBy(x => x.Date).Take(take + 1).ToList();
 
             return events.Select(x =>
             {
@@ -139,7 +139,7 @@ namespace EventWorld.Services.Services.Events
 
         public List<EventDTO> GetEventsToApprove()
         {
-            var eventsToApprove = _repository.Query().Where(x => !x.Deleted && !x.IsApproved).ToList();
+            var eventsToApprove = _repository.Query().Where(x => !x.Deleted && !x.IsApproved).OrderBy(x => x.Date).ToList();
             return eventsToApprove.Select(x =>
             {
                 var eventDto = (EventDTO)new EventDTO().InjectFrom(x);
